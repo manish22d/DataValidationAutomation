@@ -1,5 +1,12 @@
 package com.optum.pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import org.springframework.stereotype.Component;
+
+@Component
+@AllArgsConstructor
+@NoArgsConstructor
 public class Datasource {
     private Integer maxPollSize;
 

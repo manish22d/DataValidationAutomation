@@ -13,6 +13,7 @@ public class DataSource {
         Integer maxPoolSize = datasource.getMaxPollSize();
 
         cpd = new ComboPooledDataSource();
+
         cpd.setJdbcUrl(datasource.getUrl());
         cpd.setUser(datasource.getUser());
         cpd.setPassword(datasource.getPassword());
@@ -20,7 +21,7 @@ public class DataSource {
         cpd.setAcquireRetryAttempts(3); // default is 30
         cpd.setAcquireRetryDelay(10000);
 
-        cpd.setInitialPoolSize(1);
+        cpd.setInitialPoolSize(5);
         cpd.setMinPoolSize(1);
         cpd.setAcquireIncrement(1);
         if (maxPoolSize == null || maxPoolSize == 0 || maxPoolSize > 500) {
