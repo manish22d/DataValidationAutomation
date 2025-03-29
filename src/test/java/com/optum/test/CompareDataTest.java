@@ -28,9 +28,6 @@ public class CompareDataTest extends AbstractTestNGSpringContextTests {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    @Autowired
-    Reconcile Reconcile;
-
     @BeforeClass
     public void setUp() {
         excelReader = new ExcelReader(path);
@@ -60,7 +57,7 @@ public class CompareDataTest extends AbstractTestNGSpringContextTests {
 
             ReconciliationReport report = reconcile.reconcile(outputFromExcel, outputFromDb, "EVNT-TYP-ID");
             log.info(report.toString());
-
+            report.generateReportTable();
             Assert.assertTrue(report.mismatched.isEmpty());
             Assert.assertTrue(report.missing.isEmpty());
         }
