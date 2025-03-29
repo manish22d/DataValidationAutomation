@@ -1,73 +1,58 @@
 package com.optum.reconcile;
 
+import com.optum.report.ReconciliationReport;
+import org.springframework.stereotype.Service;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
+@Service
 public class Reconcile {
-    public static Map<String, List<Map<String, Object>>> reconcile(
-            List<Map<String, Object>> expected,
-            List<Map<String, Object>> actual,
-            String primaryKey) {
 
-        Map<Object, Map<String, Object>> expectedMap = new HashMap<>();
-        Map<Object, Map<String, Object>> actualMap = new HashMap<>();
-
-        for (Map<String, Object> map : expected) {
-            Object key = map.get(primaryKey);
-            if (expectedMap.containsKey(key)) {
-                throw new IllegalArgumentException("Duplicate key found in expected list: " + key);
-            }
-            expectedMap.put(key, map);
-        }
-
-        for (Map<String, Object> map : actual) {
-            Object key = map.get(primaryKey);
-            if (actualMap.containsKey(key)) {
-                throw new IllegalArgumentException("Duplicate key found in actual list: " + key);
-            }
-            actualMap.put(key, map);
-        }
-
-        List<Map<String, Object>> missing = new ArrayList<>();
-        List<Map<String, Object>> extra = new ArrayList<>();
-        List<Map<String, Object>> mismatched = new ArrayList<>();
-
-        for (Object key : expectedMap.keySet()) {
-            if (!actualMap.containsKey(key)) {
-                missing.add(Collections.singletonMap(primaryKey, key));
-            } else {
-                Map<String, Object> expectedEntry = new HashMap<>(expectedMap.get(key));
-                Map<String, Object> actualEntry = actualMap.get(key);
-                expectedEntry.keySet().retainAll(actualEntry.keySet()); // Ignore extra keys in expected
-
-                List<String> mismatchedFields = new ArrayList<>();
-                for (String field : expectedEntry.keySet()) {
-                    if (!Objects.equals(expectedEntry.get(field), actualEntry.get(field))) {
-                        mismatchedFields.add(field);
-                    }
-                }
-
-                if (!mismatchedFields.isEmpty()) {
-                    Map<String, Object> diff = new HashMap<>();
-                    diff.put(primaryKey, key);
-                    diff.put("mismatchedFields", mismatchedFields);
-                    mismatched.add(diff);
-                }
-            }
-        }
-
-        for (Object key : actualMap.keySet()) {
-            if (!expectedMap.containsKey(key)) {
-                extra.add(Collections.singletonMap(primaryKey, key));
-            }
-        }
-
-        Map<String, List<Map<String, Object>>> reconciliationReport = new HashMap<>();
-        reconciliationReport.put("missing", missing);
-        reconciliationReport.put("extra", extra);
-        reconciliationReport.put("mismatched", mismatched);
-
-        return reconciliationReport;
+    public ReconciliationReport reconcile(List<Map<String, Object>> expected, List<Map<String, Object>> actual) {
+        return reconcile(expected, actual, null); // Delegate to the other method
     }
+
+    public ReconciliationReport reconcile(List<Map<String, Object>> expected, List<Map<String, Object>> actual, String primaryKey) {
+        ReconciliationReport report = new ReconciliationReport();
+
+        // Convert lists to maps for efficient lookup
+        Map<String, Map<String, Object>> expectedMap = convertListToMap(expected, primaryKey);
+        Map<String, Map<String, Object>> actualMap = convertListToMap(actual, primaryKey);
+
+        // Merge keys to find all unique entries
+        Set<String> allKeys = new HashSet<>();
+        allKeys.addAll(expectedMap.keySet());
+        allKeys.addAll(actualMap.keySet());
+
+        for (String key : allKeys) {
+            Map<String, Object> expectedValue = expectedMap.get(key);
+            Map<String, Object> actualValue = actualMap.get(key);
+
+            if (expectedValue == null) {
+                report.extra.add(actualValue); // Extra in actual
+            } else if (actualValue == null) {
+                report.missing.add(expectedValue); // Missing in actual
+            } else if (!expectedValue.equals(actualValue)) {
+                report.mismatched.add(expectedValue); // Exists but values differ
+            }
+        }
+
+        return report;
+    }
+
+    private Map<String, Map<String, Object>> convertListToMap(List<Map<String, Object>> list, String primaryKey) {
+        return list.stream()
+                .collect(Collectors.toMap(
+                        item -> primaryKey != null && item.containsKey(primaryKey) ? item.get(primaryKey).toString() : serializeMap(item),
+                        item -> item,
+                        (existing, replacement) -> existing // Handle duplicates by keeping first entry
+                ));
+    }
+
+    private String serializeMap(Map<String, Object> map) {
+        return new TreeMap<>(map).toString(); // Ensures consistent key order
+    }
+
 
 }

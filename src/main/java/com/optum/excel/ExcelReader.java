@@ -15,6 +15,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.BiConsumer;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 //@Component
 public class ExcelReader {
@@ -35,10 +37,15 @@ public class ExcelReader {
                 throw new RuntimeException(e);
             }
         }));
-
     }
 
-    private static Object evaluateFormulaCell(Cell cell) {
+    public List<String> getSheets() {
+        return IntStream.range(0, workbook.getNumberOfSheets())
+                .mapToObj(workbook::getSheetName)
+                .collect(Collectors.toList());
+    }
+
+    private Object evaluateFormulaCell(Cell cell) {
         try {
             FormulaEvaluator evaluator = cell.getSheet().getWorkbook().getCreationHelper().createFormulaEvaluator();
             CellValue cellValue = evaluator.evaluate(cell);
@@ -62,8 +69,6 @@ public class ExcelReader {
     private List<Map<String, Object>> getData(XSSFSheet sheet) {
         List<Map<String, Object>> data = new ArrayList<Map<String, Object>>();
         List<String> headers = getHeaders(sheet);
-        DataFormatter formatter = new DataFormatter();
-
         for (int i = 1; i <= sheet.getLastRowNum(); i++) {
             Map<String, Object> rowMap = new HashedMap<String, Object>();
             XSSFRow row = sheet.getRow(i);

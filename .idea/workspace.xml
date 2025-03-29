@@ -6,16 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ad075f7c-1783-4afb-ba84-8e7c9a299acf" name="Changes" comment="added test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/config/AppConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/db/DataSource.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/excel/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/optum/excel/ExcelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/pojo/Datasource.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/reconcile/Reconcile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/optum/reconcile/Reconcile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/testData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/testData.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/optum/test/CompareDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optum/test/CompareDataTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/optum/test/SpringTestngExampleApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -200,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1742761408173</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="added test">
+      <created>1743242994752</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1743242994752</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
