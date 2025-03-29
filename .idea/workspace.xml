@@ -4,21 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad075f7c-1783-4afb-ba84-8e7c9a299acf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="ad075f7c-1783-4afb-ba84-8e7c9a299acf" name="Changes" comment="added test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/db/DataSource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/optum/db/DataSource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/config/AppConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/db/DataSource.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/excel/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/optum/excel/ExcelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/pojo/Datasource.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/optum/pojo/Datasource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/pojo/Datasource.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/optum/reconcile/Reconcile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/optum/reconcile/Reconcile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/data/testData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/testData.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/com/optum/test/CompareDataTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/optum/test/CompareDataTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/optum/test/SpringTestngExampleApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +51,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Automation/DataValidationAutomation/src/test/resources&quot;
+    &quot;last_opened_file_path&quot;: &quot;D:/Automation/qa-iprefer-automations&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -80,18 +77,55 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DataValidationAutomation [clean,test...]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="clean" />
+                <option value="test" />
+                <option value="-Dlog4j2.debug=true" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
+    </configuration>
     <configuration name="CompareDataTest.reconcileData" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="DataValidationAutomation" />
+      <shortenClasspath name="NONE" />
+      <useClassPathOnly />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.optum.test.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="SUITE_NAME" value="" />
       <option name="PACKAGE_NAME" value="com.optum.test" />
       <option name="MAIN_CLASS_NAME" value="com.optum.test.CompareDataTest" />
       <option name="METHOD_NAME" value="reconcileData" />
+      <option name="GROUP_NAME" value="" />
       <option name="TEST_OBJECT" value="METHOD" />
+      <option name="PARAMETERS" value="" />
+      <option name="OUTPUT_DIRECTORY" value="" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="PROPERTIES_FILE" value="" />
       <properties />
       <listeners />
       <method v="2">
@@ -134,6 +168,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.SpringTestngExampleApplicationTests.testDatabaseConnection" />
+      <item itemvalue="Maven.DataValidationAutomation [clean,test...]" />
+      <item itemvalue="TestNG.CompareDataTest.reconcileData" />
+      <item itemvalue="TestNG.CompareDataTest.testDb" />
+      <item itemvalue="TestNG.CompareDataTest.testReadExcel" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="TestNG.CompareDataTest.reconcileData" />
@@ -152,6 +193,14 @@
       <option name="presentableId" value="Default" />
       <updated>1742178988817</updated>
     </task>
+    <task id="LOCAL-00001" summary="added test">
+      <created>1742761408173</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1742761408173</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,6 +213,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added test" />
+    <option name="LAST_COMMIT_MESSAGE" value="added test" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DataValidationAutomation$CompareDataTest_testDb.ic" NAME="CompareDataTest.testDb Coverage Results" MODIFIED="1742398448860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">

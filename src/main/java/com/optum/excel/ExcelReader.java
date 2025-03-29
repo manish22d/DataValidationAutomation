@@ -9,6 +9,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -19,8 +20,8 @@ import java.util.function.BiConsumer;
 public class ExcelReader {
     XSSFWorkbook workbook;
 
-    public ExcelReader(String dataFile) {
-        File file = new File(dataFile);
+    public ExcelReader(Path dataFile) {
+        File file = new File(dataFile.toUri());
         try {
             workbook = new XSSFWorkbook(file);
         } catch (IOException | InvalidFormatException e) {
